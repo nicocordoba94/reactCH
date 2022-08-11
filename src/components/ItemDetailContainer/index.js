@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         getProductById(productId)
             .then(product => {
-                setProduct(product)
+                setProduct(product.find((obj)=>obj.id==productId))
             })
             .catch(error => {
                 console.log(error)

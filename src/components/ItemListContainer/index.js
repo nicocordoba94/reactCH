@@ -10,7 +10,6 @@ const ItemListContainer = ({greeting}) => {
     const { categoryId } = useParams()
 
     useEffect(() => {
-
         if(!categoryId){
         getProducts().then(products => {
             setProducts(products)
