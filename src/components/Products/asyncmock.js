@@ -1,10 +1,11 @@
-const products = [
+const PRODUCTS = [
     {
         "id": 0,
         "nombre": "Notebook Gamer i3",
         "precio": 88000,
         "category": "Importado",
         "stock": 20,
+        "inicial": 1,
         "imagen": "https://delta.com.ar/media/catalog/product/cache/03229c62aec18bc8968e7effca99b533/5/5/55083_800_2.jpg"
 
     },
@@ -14,8 +15,8 @@ const products = [
         "precio": 99000,
         "category": "Nacional",
         "stock": 10,
+        "inicial": 1,
         "imagen": "https://delta.com.ar/media/catalog/product/cache/03229c62aec18bc8968e7effca99b533/5/1/51614_800_1.jpg"
-
     },
     {
         "id": 2,
@@ -23,6 +24,7 @@ const products = [
         "precio": 109000,
         "category": "Importado",
         "stock": 16,
+        "inicial": 2,
         "imagen": "https://delta.com.ar/media/catalog/product/cache/03229c62aec18bc8968e7effca99b533/i/d/ideapad_3_14itl6_ct1_01.png"
 
     },
@@ -32,6 +34,7 @@ const products = [
         "precio": 139990,
         "category": "Importado",
         "stock": 20,
+        "inicial": 2,
         "imagen": "https://delta.com.ar/media/catalog/product/cache/03229c62aec18bc8968e7effca99b533/3/a/3a8v8la-1_t1651684423.jpg"
 
     },
@@ -41,6 +44,7 @@ const products = [
         "precio": 179999,
         "category": "Importado",
         "stock": 5,
+        "inicial": 1,
         "imagen": "https://delta.com.ar/media/catalog/product/cache/03229c62aec18bc8968e7effca99b533/d/_/d_nq_np_2x_989992-mla47934600734_102021-f.jpg"
 
     },
@@ -50,6 +54,7 @@ const products = [
         "precio": 99999,
         "category": "Importado",
         "stock": 10,
+        "inicial": 1,
         "imagen": "https://delta.com.ar/media/catalog/product/cache/03229c62aec18bc8968e7effca99b533/s/1/s145-14iil.jpg"
 
     },
@@ -59,38 +64,30 @@ const products = [
         "precio": 129990,
         "category": "Nacional",
         "stock": 5,
+        "inicial": 1,
         "imagen": "https://delta.com.ar/media/catalog/product/cache/dcfa4d7d2f407766967fe41942d9a0cc/5/1/51614_800_1.jpg"
 
     },
 ]
 
-export const getProducts = () => {
+const TESTING_DELAY = 3000;
+
+export function getProductsByCategory (categoryId) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(products)
-        }, 1000)
-    })
+            if (categoryId) {
+                resolve(PRODUCTS.filter(prod => prod.category === categoryId));
+            } else {
+                resolve(PRODUCTS);
+            }
+        }, TESTING_DELAY);
+    });
 }
 
-export const getProductsByCategory = (categoryId) => {
+export function getProductById (id) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(products.filter(prod => prod.category === categoryId))
-        }, 500)
+            resolve(PRODUCTS.find(prod => prod.id === id))
+        }, TESTING_DELAY)
     })
 }
-
-export const getProductById = (id) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(products.find(prod => prod.id === id))
-        }, 500)
-    })
-}
-
-/*const getFetch = new Promise ((resolve, reject)=>{
-    let condition=true
-    condition ? setTimeout(()=>{resolve(Data)}, 2000) : reject(console.log("error en base de datos"))
-})
-
-export default getFetch;*/

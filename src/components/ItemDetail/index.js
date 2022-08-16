@@ -1,24 +1,63 @@
-import React from "react";
-import { Button } from "react-bootstrap";
-import "./ItemDetail.css";
-import { getProducts, getProductsByCategory, getProductById } from '../Products/asyncmock'
+import React, { useContext, useState } from "react";
+import Contador from '../Contador';
+import Card from "react-bootstrap/Card"
+import { Link } from 'react-router-dom';
+import { CartContext } from '../CartContext';
 
-const ItemDetail = (products) => {
+export default function ItemDetail ({
+    id, 
+    nombre, 
+    precio, 
+    category, 
+    stock, 
+    imagen,
+    inicial
+}) {
+
+    const { addCartItem } = useContext(CartContext);
+    const [productAddedToCard, setProductAddedToCard] = useState(false);
+    const onAdd = (quantityToAdd) => {
+        addCartItem( { id, quantity: quantityToAdd } );
+
+        console.log(
+            ">> Evento recibido del ItemCount! - Cantidad agregada: ",
+            quantityToAdd
+        );
+        setProductAddedToCard(true);
+    };
+
+
+
     return (
-    <>
-        <img src={products.imagen} alt="" className="imagen"></img>
-        <div className="detalles d-flex row col-12 m-1 p-1 justify-content-evenly">
-            <div className="descripcion">
-                <h2 style={{ textAlign: "center" }}>{products.titulo}</h2>
-
+        <div className="d-flex row col-12 m-1 p-1 justify-content-evenly">
+            <Card className="col-3 m-2 p-7">
+            <Card.Img
+                variant="top"
+                src={imagen}
+                className="img-fluid"
+            />
+            <Card.Body>
+                <Card.Title>
+                    <h1>{nombre}</h1>
+                    <h2>{category}</h2>
+                </Card.Title>
+                <Card.Text className="fw-bold fs-3">${precio}</Card.Text>
+                <div className="text-center">                                
+                </div>
+                <div className="container-fluid">
+                    <div className="row">
+                    {productAddedToCard ? <Link to={`/cart`} >Agregado! Ver carrito</Link> : (
+                    <Contador
+                        onAddItemsToCart={onAdd}
+                        stock={stock}
+                        inicial={inicial}
+                    ></Contador>
+                )}
+                    </div>
             </div>
-        <div className="lastCont">
-            <div className="precio">$ {products.precio}</div>
-            <Button className="btn-dark btnBuy">Comprar</Button>
-        </div>
-        </div>
-    </>
+            </Card.Body>
+            </Card>
+        </div> 
     );
-};
+    }
 
-export default ItemDetail;
