@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 
 export default function Item ({id, nombre, precio, category, stock, imagen, estilo}) {
     return(
-        <Card className="col-3 m-2 p-7">
+        <Card className="col-3 m-2 p-2">
         <Card.Img
             variant="top"
             src={imagen}
