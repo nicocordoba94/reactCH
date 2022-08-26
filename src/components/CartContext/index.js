@@ -27,7 +27,7 @@ export default function CartCustomContext({ children }) {
   //funcion de vaciar carrito
   const eliminarTodo = () => {
     return cart.length >= 1 ? (
-        <Button onClick={LimpiarCart} className="btn btn-warning w-100">
+        <Button onClick={LimpiarCart} className="btn btn-warning w-25">
           Vaciar carrito
         </Button>
       ) : (
@@ -59,7 +59,7 @@ export default function CartCustomContext({ children }) {
   //Funcion finalizar compra
   const finalizarCompra = () => {
     return cart.length >= 1 ? (
-      <Button onClick={LimpiarCart} className="btn btn-success w-100">
+      <Button onClick={LimpiarCart} className="btn btn-success w-25">
         Finalizar Compra
       </Button>
     ) : (

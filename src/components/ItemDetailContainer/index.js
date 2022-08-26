@@ -1,29 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { getProductById } from '../Products/asyncmock'
 import ItemDetail from '../ItemDetail';
-
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 export default function ItemDetailContainer() {
-    const { id } = useParams();
-    const productId = !isNaN(id) && +id;
 
-    const [productData, setProductData] = useState({});
+    const [productData, setProductData] = useState();
+    const {id} = useParams();
+    
     useEffect(() => {
-        setProductData({});
-        const productDataPromise = getProductById(productId);
-        productDataPromise.then(
-            (data) => {
-                setProductData(data);
-            },
-            (err) => {
-                console.log(
-                    "Ha ocurrido un error al buscar la info del Producto: ",
-                    err
-                );
-            }
-        );
-    }, []);
+      const queryDatabase = getFirestore ()
+      const queryDoc = doc(queryDatabase, 'Productos', id)
+      getDoc(queryDoc)
+      .then(res => setProductData({id:res.id, ...res.data()}))
+
+    }, [id])
+
+
+
     return (
         <div>
             {productData && productData.id ? (
