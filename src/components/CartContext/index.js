@@ -47,8 +47,8 @@ export default function CartCustomContext({ children }) {
   //Funcion de precio final
   const precioFinal = () => {
     return cart.length >= 1 ? (cart.reduce((prev, item) => prev + item.quantity * item.precio, 0)) : (
-        " "
-      );;
+      " "
+    );;
   };
 
   //Funcion total de productos
