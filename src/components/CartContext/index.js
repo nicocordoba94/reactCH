@@ -47,13 +47,13 @@ export default function CartCustomContext({ children }) {
   //Funcion de precio final
   const precioFinal = () => {
     return cart.length >= 1 ? (cart.reduce((prev, item) => prev + item.quantity * item.precio, 0)) : (
-      " "
-    );;
+        " "
+      );;
   };
 
   //Funcion total de productos
   const totalProductos = () => {
-    return cart.reduce((prev, act) => prev + act.cantidad, 0);
+    return cart.reduce((prev, act) => prev + act.quantity, 0);
   };
 
   //Funcion finalizar compra

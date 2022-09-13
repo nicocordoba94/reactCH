@@ -15,7 +15,6 @@ export default function Item ({id, nombre, precio, category, stock, imagen, esti
             <Card.Title>
                 <h2>{nombre}</h2>
                 <h4>{estilo}</h4>
-                <h4>{category}</h4>
             </Card.Title>
             <Card.Text className="fw-bold fs-3">${precio}</Card.Text>
             <div className="text-center">                                

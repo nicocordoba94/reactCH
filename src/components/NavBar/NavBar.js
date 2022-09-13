@@ -9,8 +9,9 @@ import CartWidget from '../CartWidget'
 export default function NavBar() {
   return (
     
-    <Navbar className="navbar "  expand="lg">
+    <Navbar className= "navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light" expand="lg">
       <Container>
+        <img className="imagen-logo" src="./deltaLogo.svg" alt="..."/>
         <Nav.Link classname="logo-nav" as={Link} to={'/'}>Delta</Nav.Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

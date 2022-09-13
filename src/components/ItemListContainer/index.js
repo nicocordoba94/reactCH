@@ -14,7 +14,7 @@ export default function ItemListContainer () {
     useEffect(()=>{
 
       const coleRef = collection(DB, "Productos");
-     
+      
       if(categoryId){
         const  colFilterRef = query(coleRef, where('category', '==', categoryId))
         getDocs(colFilterRef)

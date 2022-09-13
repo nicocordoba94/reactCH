@@ -5,7 +5,6 @@ export default function Contador({ onAddItemsToCart, stock, inicial }) {
     const [selectedNumItems, setSelectedNumItems] = useState(Number(inicial));
 
     const onAdd = () => {
-        console.log(`${selectedNumItems} agregados al carrito!`);
         onAddItemsToCart(selectedNumItems);
     }
     const agregarAlContador = () => {

@@ -7,11 +7,11 @@ import Nav from 'react-bootstrap/Nav';
 
 export default function CartWidget () {
 
-  const { cartData } = useCartContext();
+  const { totalProductos } = useCartContext();
     return (
         <Nav.Link as={Link} to={`/cart`} >
         <FaShoppingCart />
-        <span>{ cartData.length }</span>
+        <span className='cartcant'>{ totalProductos() || "0"}</span> 
         </Nav.Link>
     );
 }

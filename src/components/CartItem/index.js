@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import { useCartContext } from '../CartContext';
 import Button from 'react-bootstrap/Button'
 
+
 const CartItem = ({ id, quantity, nombre, imagen, precio }) => {
     const { eliminarProducto } = useCartContext();
 
@@ -20,7 +21,7 @@ const CartItem = ({ id, quantity, nombre, imagen, precio }) => {
                 <h3>Cantidad: {quantity}</h3>
                 <h4>{nombre}</h4>
             </Card.Title>
-            <Card.Text className="fw-bold fs-3">${precio}</Card.Text>                            
+            <Card.Text className="fw-bold fs-3">${precio}</Card.Text>
             <Button variant="danger" onClick={() => eliminarProducto(id)}>Quitar Producto</Button>
         </Card.Body>
     </Card>
